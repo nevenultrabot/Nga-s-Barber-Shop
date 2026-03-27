@@ -605,37 +605,13 @@
     .g4 { grid-column: span 4; height: 200px; }
     .g5 { grid-column: span 3; height: 200px; }
 
-    /* ── TEAM ── */
-    .team-section { background: #fff; }
-    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; margin-top: 3rem; }
-    .team-card {
-      position: relative; overflow: hidden;
-      transition: transform 0.35s, box-shadow 0.35s;
-    }
-    .team-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.12); }
-    .team-img {
-      width: 100%; aspect-ratio: 3/4; object-fit: cover;
-      display: block; filter: sepia(20%);
-      transition: filter 0.4s;
-    }
-    .team-card:hover .team-img { filter: sepia(0%); }
-    .team-info {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(to top, rgba(26,18,8,0.92) 0%, transparent 100%);
-      padding: 2.5rem 1.5rem 1.5rem;
-      transform: translateY(0);
-    }
-    .team-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #fff; font-weight: 600; }
-    .team-role { font-size: 0.7rem; color: var(--c4); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
-    .team-spec { font-size: 0.75rem; color: rgba(255,255,255,0.55); margin-top: 4px; }
-
     /* ── MAP / CONTACT ── */
-    .contact-section { background: var(--dark); }
+    .contact-section { background: #0d0a05; padding-bottom: 0; }
     .contact-section .section-title { color: #fff; }
     .contact-section .section-sub { color: rgba(255,255,255,0.5); }
     .contact-grid {
       display: grid; grid-template-columns: 1fr 1.3fr;
-      gap: 3rem; margin-top: 3.5rem; align-items: start;
+      gap: 3rem; margin-top: 0; align-items: start;
     }
     .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
     .contact-item { display: flex; gap: 1rem; }
@@ -660,7 +636,7 @@
 
     /* ── FOOTER ── */
     footer {
-      background: #0d0a05; padding: 3rem 2rem;
+      background: #0d0a05; padding: 2rem 2rem 4rem;
       text-align: center;
     }
     .footer-logo {
@@ -764,6 +740,55 @@
       background: rgba(127,79,36,0.05);
       border-left: 3px solid var(--c4);
       padding: 0.6rem 0.8rem; margin-top: 0.3rem;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-section { background: #fff; }
+    .testimonial-card {
+      background: var(--cream);
+      padding: 3.5rem; border-radius: 4px;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.06);
+      position: relative;
+    }
+    .testimonial-quotes {
+      position: absolute; top: 1.5rem; left: 2rem;
+      font-size: 5rem; color: var(--c4); opacity: 0.2;
+      font-family: 'Playfair Display', serif;
+      line-height: 1;
+    }
+    .testimonial-content {
+      position: relative; z-index: 1;
+      font-size: 1.05rem; line-height: 1.8;
+      color: var(--dark); font-style: italic;
+      margin-bottom: 2.5rem;
+    }
+    .testimonial-author {
+      display: flex; align-items: center; gap: 1.2rem;
+    }
+    .testimonial-avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      object-fit: cover; border: 2px solid var(--c3);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .testimonial-info-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--c1);
+    }
+    .testimonial-info-date {
+      font-size: 0.72rem; color: #999;
+      margin-top: 2px; letter-spacing: 0.02em;
+    }
+    .testimonial-stars { color: #f4a017; font-size: 1rem; margin-bottom: 0.6rem; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+    @media (max-width: 800px) {
+      .testimonials-grid { grid-template-columns: 1fr; }
     }
 
     /* ── ADMIN PANEL ── */
@@ -1607,29 +1632,48 @@ function Gallery() {
   );
 }
 
-// ── TEAM ──
-function Team() {
-  const teamImgs = [
-    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400",
-    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400",
-    "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400",
-    "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400",
+// ── TESTIMONIALS ──
+function Testimonials() {
+  const reviews = [
+    {
+      name: "Jasmine Mone",
+      date: "Google Local Guide · Nov 26, 2022",
+      text: '"Nga was friendly, precise and quick. My husband had a great experience and will return again. We went again today with my son, there was a line but again, a fabulous experience."',
+      avatar: "file:///C:/Users/Pc/.gemini/antigravity/brain/cdcf1e61-9e31-4da9-a764-3af41a89b33b/media__1774625258300.png"
+    },
+    {
+      name: "Johnny Chavez",
+      date: "Local Guide · 3 years ago",
+      text: '"Gem of a find. Coming from California I was NOT looking for a modern hip barber who charges $35+ for a basic haircut. This place is exactly what I was looking for. Very skilled quick old school kind of a cut. Nga is very pleasant very skilled and very quick. I will be back."',
+      avatar: "file:///C:/Users/Pc/.gemini/antigravity/brain/cdcf1e61-9e31-4da9-a764-3af41a89b33b/media__1774626990114.png"
+    },
+    {
+      name: "Noah Shenk",
+      date: "Local Guide · 4 months ago",
+      text: '"Nga has been cutting hair for 35 years, and it shows. She knows what she\'s doing. Quality Quick cuts. I timed it today without a line, she turned my mop into something presentable in 12 minutes and 40 seconds. From walking in the door to walking out."',
+      avatar: "file:///C:/Users/Pc/.gemini/antigravity/brain/cdcf1e61-9e31-4da9-a764-3af41a89b33b/media__1774627053803.png"
+    }
   ];
+
   return (
-    <section className="section team-section" id="team">
+    <section className="section testimonials-section" id="testimonials">
       <div className="container">
         <div className="reveal" style={{textAlign:'center'}}>
-          <div className="section-tag" style={{justifyContent:'center'}}>The Crew</div>
-          <h2 className="section-title" style={{textAlign:'center'}}>Meet Our<br/><em>Master Barbers</em></h2>
+          <div className="section-tag" style={{justifyContent:'center'}}>Client Reviews</div>
+          <h2 className="section-title">What Our<br/><em>Clients Say</em></h2>
         </div>
-        <div className="team-grid reveal reveal-delay-1">
-          {BARBERS.map((b,i) => (
-            <div key={b.id} className="team-card">
-              <img className="team-img" src={teamImgs[i]} alt={b.name}/>
-              <div className="team-info">
-                <div className="team-name">{b.name}</div>
-                <div className="team-role">{b.title}</div>
-                <div className="team-spec">{b.spec}</div>
+        <div className="testimonials-grid">
+          {reviews.map((r, i) => (
+            <div key={i} className={`testimonial-card reveal reveal-delay-${i + 1}`}>
+              <div className="testimonial-quotes">“</div>
+              <div className="testimonial-stars">★★★★★</div>
+              <div className="testimonial-content">{r.text}</div>
+              <div className="testimonial-author">
+                <img className="testimonial-avatar" src={r.avatar} alt={r.name}/>
+                <div className="testimonial-info">
+                  <div className="testimonial-info-name">{r.name}</div>
+                  <div className="testimonial-info-date">{r.date}</div>
+                </div>
               </div>
             </div>
           ))}
@@ -1639,6 +1683,8 @@ function Team() {
   );
 }
 
+// ── TEAM ── REMOVED 
+ 
 // ── CONTACT & MAP ──
 function Contact() {
   const days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
@@ -1647,13 +1693,13 @@ function Contact() {
   return (
     <section className="section contact-section" id="contact">
       <div className="container">
-        <div className="reveal">
-          <div className="section-tag" style={{color:'var(--c4)'}}>Find Us</div>
-          <h2 className="section-title">Visit the<br/><em>Shop</em></h2>
-          <p className="section-sub">Come in, pull up a chair, and let us take care of you.</p>
-        </div>
         <div className="contact-grid reveal reveal-delay-1">
           <div className="contact-info">
+            <div style={{marginBottom:'2.5rem'}}>
+              <div className="section-tag" style={{color:'var(--c4)'}}>Find Us</div>
+              <h2 className="section-title">Visit the<br/><em>Shop</em></h2>
+              <p className="section-sub">Come in, pull up a chair, and let us take care of you.</p>
+            </div>
             <div className="contact-item">
               <div className="contact-icon">📍</div>
               <div>
@@ -1682,7 +1728,7 @@ function Contact() {
               </div>
             </div>
           </div>
-          <div style={{borderRadius:'2px',overflow:'hidden'}}>
+          <div style={{borderRadius:'2px',overflow:'hidden',marginTop:'2rem'}}>
             <iframe
               className="map-frame"
               title="Nga's Barber Shop Location"
@@ -1872,9 +1918,9 @@ function App() {
       <Hero onBook={scrollToBook}/>
       <About/>
       <ServicesShowcase/>
-      <BookingSection bookingRef={bookingRef}/>
       <Gallery/>
-      <Team/>
+      <Testimonials/>
+      <BookingSection bookingRef={bookingRef}/>
       <Contact/>
       <Footer/>
       <button className="admin-toggle-btn" onClick={() => setAdminOpen(true)}>
