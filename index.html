@@ -10,6 +10,7 @@
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -940,6 +941,9 @@
 <script type="text/babel">
 const { useState, useEffect, useRef, useCallback } = React;
 
+// Initialize EmailJS
+emailjs.init("jxTNjyO4tQM_IncWg");
+
 // ── DATA ──
 const BARBERS = [
   { id: 1, name: "Nga", title: "Master Barber", rating: "★★★★★", spec: "Fades & Tapers", avatar: "https://i.pravatar.cc/150?img=59" },
@@ -1333,18 +1337,37 @@ function BookingSection({ bookingRef }) {
     .then(response => response.json())
     .then(data => {
       console.log('SheetDB Success:', data);
-      alert('Termin uspešno zakazan!');
       
-      // Update local state and finish booking flow
-      const existing = JSON.parse(localStorage.getItem('barber_bookings') || '[]');
-      localStorage.setItem('barber_bookings', JSON.stringify([...existing, booking]));
-      const key = `${barber.id}-${date?.toDateString()}-${slot}`;
-      setConfirmedBookings(prev => [...prev, key]);
-      
-      // Refresh global booked slots
-      fetchBookedSlots();
-      
-      setBooked(true);
+      // --- EMAILJS INTEGRATION ---
+      const templateParams = {
+        ime: clientInfo.name,
+        vreme: formatToSheetDate(date, slot),
+        barber: barber.name,
+        email: clientInfo.email
+      };
+
+      emailjs.send('service_1sfjbdn', 'template_6jxg6zb', templateParams)
+        .then(() => {
+          alert('Termin uspešno zakazan!');
+          
+          // Update local state and finish booking flow
+          const existing = JSON.parse(localStorage.getItem('barber_bookings') || '[]');
+          localStorage.setItem('barber_bookings', JSON.stringify([...existing, booking]));
+          const key = `${barber.id}-${date?.toDateString()}-${slot}`;
+          setConfirmedBookings(prev => [...prev, key]);
+          
+          // Refresh global booked slots
+          fetchBookedSlots();
+          
+          setBooked(true);
+        })
+        .catch(error => {
+          console.error('Email Error:', error);
+          alert('Rezervacija je sačuvana, ali je došlo do greške pri slanju potvrde.');
+          // We still setBooked(true) so the user doesn't try to book again 
+          // even if the email failed (since SheetDB succeeded)
+          setBooked(true);
+        });
     })
     .catch(error => {
       console.error('SheetDB Error:', error);
