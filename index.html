@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nga's Barber Shop — Precision in Every Cut</title>
+  <title>Camille Barber Studio — Precision in Every Cut</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
@@ -946,7 +946,7 @@ emailjs.init("jxTNjyO4tQM_IncWg");
 
 // ── DATA ──
 const BARBERS = [
-  { id: 1, name: "Nga", title: "Master Barber", rating: "★★★★★", spec: "Fades & Tapers", avatar: "https://i.pravatar.cc/150?img=59" },
+  { id: 1, name: "Camille", title: "Master Barber", rating: "★★★★★", spec: "Fades & Tapers", avatar: "https://i.pravatar.cc/150?img=59" },
   { id: 2, name: "Minh", title: "Senior Stylist", rating: "★★★★½", spec: "Classic Cuts", avatar: "https://i.pravatar.cc/150?img=51" },
   { id: 3, name: "Linh", title: "Beard Expert", rating: "★★★★★", spec: "Beard & Shape-Up", avatar: "https://i.pravatar.cc/150?img=52" },
   { id: 4, name: "Khoa", title: "Junior Barber", rating: "★★★★☆", spec: "Modern Styles", avatar: "https://i.pravatar.cc/150?img=53" },
@@ -1052,7 +1052,7 @@ function Navbar({ onBook, mobileOpen, setMobileOpen }) {
   return (
     <>
       <nav className={`navbar ${scrolled ? 'scrolled' : 'top'}`}>
-        <a href="#" className="nav-logo">Nga's <span>Barber Shop</span></a>
+        <a href="#" className="nav-logo">Camille <span>Barber Studio</span></a>
         <ul className="nav-links">
           {["About Us","Gallery","Contact"].map(l => (
             <li key={l}><a href={`#${l.toLowerCase().replace(' ','-')}`}>{l}</a></li>
@@ -1083,7 +1083,7 @@ function Hero({ onBook }) {
       <div className="hero-noise"/>
       <div className="hero-deco-line"/>
       <div className="hero-content">
-        <div className="hero-eyebrow">Est. 2009 · Aloha, Oregon</div>
+        <div className="hero-eyebrow">Est. 2009 · Reno, Nevada</div>
         <h1 className="hero-title">
           Precision in Every Cut,<br/>
           <em>Tradition</em> in Every Detail
@@ -1133,15 +1133,15 @@ function About() {
           <div className="section-tag">Our Story</div>
           <h2 className="section-title">A Cut Above<br/><em>the Rest</em></h2>
           <p className="section-sub" style={{marginBottom:'1.5rem'}}>
-            Nga's Barber Shop opened its doors in 2009 with one mission:
-            to bring old-school barbering precision and community spirit to Aloha, Oregon.
+            Camille Barber Studio opened its doors in 2009 with one mission:
+            to bring old-school barbering precision and community spirit to Reno, Nevada.
             Every visit is a ritual — from the warm greeting to the final clean-up.
           </p>
           <div className="about-features">
             {[
               { icon: "💈", title: "Heritage Techniques", desc: "Classic straight razor shaves and scissor work passed through generations." },
               { icon: "🎯", title: "Precision Fades", desc: "Skin to scissors — every fade is executed with obsessive attention to detail." },
-              { icon: "🤝", title: "Community First", desc: "More than a shop — a gathering place where Aloha comes together." },
+              { icon: "🤝", title: "Community First", desc: "More than a shop — a gathering place where Reno comes together." },
             ].map(f => (
               <div className="about-feature" key={f.title}>
                 <div className="about-feature-icon">{f.icon}</div>
@@ -1661,19 +1661,19 @@ function Testimonials() {
     {
       name: "Jasmine Mone",
       date: "Google Local Guide · Nov 26, 2022",
-      text: '"Nga was friendly, precise and quick. My husband had a great experience and will return again. We went again today with my son, there was a line but again, a fabulous experience."',
+      text: '"Camille was friendly, precise and quick. My husband had a great experience and will return again. We went again today with my son, there was a line but again, a fabulous experience."',
       avatar: "file:///C:/Users/Pc/.gemini/antigravity/brain/cdcf1e61-9e31-4da9-a764-3af41a89b33b/media__1774625258300.png"
     },
     {
       name: "Johnny Chavez",
       date: "Local Guide · 3 years ago",
-      text: '"Gem of a find. Coming from California I was NOT looking for a modern hip barber who charges $35+ for a basic haircut. This place is exactly what I was looking for. Very skilled quick old school kind of a cut. Nga is very pleasant very skilled and very quick. I will be back."',
+      text: '"Gem of a find. Coming from California I was NOT looking for a modern hip barber who charges $35+ for a basic haircut. This place is exactly what I was looking for. Very skilled quick old school kind of a cut. Camille is very pleasant very skilled and very quick. I will be back."',
       avatar: "file:///C:/Users/Pc/.gemini/antigravity/brain/cdcf1e61-9e31-4da9-a764-3af41a89b33b/media__1774626990114.png"
     },
     {
       name: "Noah Shenk",
       date: "Local Guide · 4 months ago",
-      text: '"Nga has been cutting hair for 35 years, and it shows. She knows what she\'s doing. Quality Quick cuts. I timed it today without a line, she turned my mop into something presentable in 12 minutes and 40 seconds. From walking in the door to walking out."',
+      text: '"Camille has been cutting hair for 35 years, and it shows. She knows what she\'s doing. Quality Quick cuts. I timed it today without a line, she turned my mop into something presentable in 12 minutes and 40 seconds. From walking in the door to walking out."',
       avatar: "file:///C:/Users/Pc/.gemini/antigravity/brain/cdcf1e61-9e31-4da9-a764-3af41a89b33b/media__1774627053803.png"
     }
   ];
@@ -1727,7 +1727,7 @@ function Contact() {
               <div className="contact-icon">📍</div>
               <div>
                 <div className="contact-item-label">Address</div>
-                <div className="contact-item-val">3100 SW 198th Ave<br/>Aloha, OR 97003, United States</div>
+                <div className="contact-item-val">3652 S Virginia St # C5<br/>Reno, NV 89502, United States</div>
               </div>
             </div>
             <div className="contact-item">
@@ -1754,8 +1754,8 @@ function Contact() {
           <div style={{borderRadius:'2px',overflow:'hidden',marginTop:'2rem'}}>
             <iframe
               className="map-frame"
-              title="Nga's Barber Shop Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2793.042882127827!2d-122.84778!3d45.4926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54950db5e4d55555%3A0x1!2s3100+SW+198th+Ave%2C+Aloha%2C+OR+97003!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+              title="Camille Barber Studio Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3076.840742566675!2d-119.78248552397127!3d39.48831341275997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809946059d044235%3A0x6b801a61c470cf59!2s3652%20S%20Virginia%20St%2C%20Reno%2C%20NV%2089502!5e0!3m2!1sen!2sus!4v1743417950000!5m2!1sen!2sus"
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -1771,7 +1771,7 @@ function Contact() {
 function Footer() {
   return (
     <footer>
-      <div className="footer-logo">Nga's <span>Barber Shop</span></div>
+      <div className="footer-logo">Camille <span>Barber Studio</span></div>
       <div className="footer-tagline">Precision · Tradition · Community</div>
       <div className="footer-links">
         {["About Us","Services","Gallery","Book Now","Contact"].map(l => (
@@ -1779,7 +1779,7 @@ function Footer() {
         ))}
       </div>
       <div className="footer-divider"/>
-      <div className="footer-copy">© {new Date().getFullYear()} Nga's Barber Shop · 3100 SW 198th Ave, Aloha, OR 97003</div>
+      <div className="footer-copy">© {new Date().getFullYear()} Camille Barber Studio · 3652 S Virginia St # C5, Reno, NV 89502</div>
     </footer>
   );
 }
@@ -1826,7 +1826,7 @@ function AdminPanel({ onClose }) {
         <div className="admin-header">
           <div className="admin-header-left">
             <div className="admin-title">Admin Schedule</div>
-            <div className="admin-subtitle">Nga's Barber Shop · Live Bookings</div>
+            <div className="admin-subtitle">Camille Barber Studio · Live Bookings</div>
           </div>
           <button className="admin-close" onClick={onClose}>✕</button>
         </div>
